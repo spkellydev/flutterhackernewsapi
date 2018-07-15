@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  createState() {}
-}
-
-class HomeState extends State<Home> {
+class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text('Home');
   }
