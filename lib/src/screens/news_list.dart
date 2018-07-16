@@ -19,7 +19,9 @@ class NewsList extends StatelessWidget {
       stream: bloc.topIds,
       builder: (context, AsyncSnapshot<List<int>> snapshot) {
         if (!snapshot.hasData) {
-          return Text('still waiting on IDS');
+          return Center(
+            child: CircularProgressIndicator(),
+          );
         }
 
         return ListView.builder(
