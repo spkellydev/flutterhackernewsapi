@@ -28,7 +28,7 @@ class ItemModel {
         url = parsedJson['url'],
         score = parsedJson['score'],
         title = parsedJson['title'],
-        descendants = parsedJson['descendants'];
+        descendants = parsedJson['descendants'] ?? 0;
 
   ItemModel.fromDb(Map<String, dynamic> parsedQuery)
       : id = parsedQuery['id'],
@@ -43,7 +43,7 @@ class ItemModel {
         url = parsedQuery['url'],
         score = parsedQuery['score'],
         title = parsedQuery['title'],
-        descendants = parsedQuery['descendants'];
+        descendants = parsedQuery['descendants'] ?? 0;
 
   Map<String, dynamic> toMapForDb() {
     return <String, dynamic>{
@@ -56,7 +56,7 @@ class ItemModel {
       "url": url,
       "score": score,
       "title": title,
-      "descendants": descendants,
+      "descendants": descendants ?? 0,
       "dead": dead ? 1 : 0,
       "deleted": deleted ? 1 : 0,
       "kids": jsonEncode(kids),
