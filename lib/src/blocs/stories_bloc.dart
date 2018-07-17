@@ -21,9 +21,13 @@ class StoriesBloc {
     _itemsFetcher.stream.transform(_itemsTransformer()).pipe(_itemsOutput);
   }
 
-  void fetchTopIds() async {
+  fetchTopIds() async {
     final ids = await _repository.fetchTopIds();
     _topIds.sink.add(ids);
+  }
+
+  Future clearCache() {
+    return _repository.clearCache();
   }
 
   // map items to cache
