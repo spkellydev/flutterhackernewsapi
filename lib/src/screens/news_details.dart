@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class NewsDetail extends StatelessWidget {
-  final String routeName;
+  final int itemId;
 
-  NewsDetail({this.routeName});
+  NewsDetail({this.itemId});
 
   Widget build(context) {
-    return Text('Im a news detail');
+    return Text('$itemId');
   }
 }

@@ -27,11 +27,14 @@ class App extends StatelessWidget {
     } else {
       return MaterialPageRoute(
         builder: (context) {
+          final itemId = int.parse(settings.name.replaceFirst('/', ''));
           return Scaffold(
             appBar: AppBar(
               title: Text('More Detail'),
             ),
-            body: Text('Im a details screen'),
+            body: NewsDetail(
+              itemId: itemId,
+            ),
           );
         },
       );
