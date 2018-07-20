@@ -19,7 +19,8 @@ class CommentsBloc {
 
   CommentsBloc() {
     _commentsFetcher.stream
-        .transform((_commentsTransformer()).pipe(_commentsOutput));
+        .transform(_commentsTransformer())
+        .pipe(_commentsOutput);
   }
 
   _commentsTransformer() {

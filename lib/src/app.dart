@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'screens/news_list.dart';
 import 'blocs/stories_provider.dart';
+import 'blocs/comments_provider.dart';
 import 'screens/news_details.dart';
 
 class App extends StatelessWidget {
   Widget build(BuildContext context) {
-    return StoriesProvider(
-      child: MaterialApp(
-        title: 'Hacker News',
-        home: NewsList(),
-        onGenerateRoute: (RouteSettings settings) {
-          // using MaterialApp navigator class
-          return routes(settings);
-        },
+    return CommentsProvider(
+      child: StoriesProvider(
+        child: MaterialApp(
+          title: 'Hacker News',
+          home: NewsList(),
+          onGenerateRoute: (RouteSettings settings) {
+            // using MaterialApp navigator class
+            return routes(settings);
+          },
+        ),
       ),
     );
   }
@@ -27,7 +30,11 @@ class App extends StatelessWidget {
     } else {
       return MaterialPageRoute(
         builder: (context) {
+          final commentsBloc = CommentsProvider.of(context);
           final itemId = int.parse(settings.name.replaceFirst('/', ''));
+
+          commentsBloc.fetchItemWithComments(itemId);
+
           return Scaffold(
             appBar: AppBar(
               title: Text('More Detail'),
